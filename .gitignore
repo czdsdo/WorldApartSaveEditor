@@ -1,0 +1,9 @@
+/*
+!/.gitignore
+!/README.md
+!/使用说明.md
+!/requirements.txt
+!/editor.py
+!/save_core.py
+!/test_editor.py
+!/test_ui.py
