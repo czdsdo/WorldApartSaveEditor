@@ -33,7 +33,9 @@ class Editor(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title('不问凡尘 · 存档修改器')
-        self.geometry('1220x820'); self.minsize(1000,680)
+        self.geometry('1220x820')
+        self.minsize(1000,680)
+        self.state('zoomed')
         self.configure(bg='#eef2f5')
         self.session = None
         self.slots = []
@@ -105,7 +107,8 @@ class Editor(tk.Tk):
         self.value_text.bind('<<Modified>>',self.text_modified)
         self.apply_btn=ttk.Button(right,text='应用到待保存列表',style='Accent.TButton',command=self.apply_value,state='disabled');self.apply_btn.pack(fill='x')
         ttk.Label(right,text='应用后仍需点击下方「备份并保存」。\n\n百分比字段保留游戏原始比例，例如 0.1 表示 10%。基础数值还会叠加装备、功法等效果。\n\n高级字段可能存在关联约束。建议先小幅修改，并从对应存档槽读档。',wraplength=265,style='Hint.TLabel',justify='left').pack(fill='x',pady=20)
-        foot=ttk.Frame(self,padding=18);foot.pack(fill='x')
+        foot=ttk.Frame(self,padding=18)
+        foot.pack(before=body, side='bottom', fill='x')
         self.save_btn=ttk.Button(foot,text='备份并保存 (0)',style='Accent.TButton',command=self.save,state='disabled');self.save_btn.pack(side='right')
         ttk.Button(foot,text='撤销全部修改',command=self.undo_all).pack(side='right',padx=10)
         ttk.Label(foot,textvariable=self.status,wraplength=650,style='Hint.TLabel').pack(side='left',fill='x',expand=True)
